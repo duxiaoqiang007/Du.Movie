@@ -39,9 +39,9 @@
 				},
 				{
 					"id": 2,
-					"name": "热门电影",
+					"name": "添加影评",
 					"pathName": "pages/editComment/editComment",
-					"query": "id=1&movie_id=1"
+					"query": "type=1&movie_id=1"
 				}
 			]
 		}

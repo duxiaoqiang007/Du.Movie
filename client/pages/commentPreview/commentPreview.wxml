@@ -1,0 +1,41 @@
+<view wx:if="{{!userInfo}}">
+  <view class='unlogin-card'>
+    <view class='unlogin-head'></view>
+    <view class='unlogin-info'>
+      <view class='unlogin-text'>未登陆</view>
+      <view class='unlogin-tips'>点击微信登陆</view>
+    </view>
+  </view>
+  <button class='unlogin-btn' open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登陆</button>
+</view>
+<view wx:if='{{userInfo}}'>
+  <view class='movieCard'>
+    <image class='movieImage' src='{{movie.image}}'></image>
+    <view class='movieTitle'>{{movie.title}}</view>
+    <view class='comment'>
+      <view class='commentUser'>
+        <image class='userImage' src='{{userInfo.avatarUrl}}'></image>
+        <view class='userNickName'>{{userInfo.nickName}}的影评</view>
+      </view>
+      <view class='commentText'>
+        <image class='line' src='/images/line-black.png'></image>
+        <view wx:if='{{commentType==0}}' class='text'>{{commentValue}}</view>
+        <view wx:if='{{commentType==1}}' class='voice'>
+          <image bindtap='onTapVoice' class='voiceImage' src='{{src}}'></image>
+          <view class='duration'>{{duration/1000}}S</view>
+        </view> 
+      </view>
+    </view>
+    <view class='btn'>
+      <view class='commentbtn' bindtap='onTapback'>
+        <image class='btnImage' src='/images/reply.svg'></image>
+        <view class='btnText'>重新编辑</view>
+      </view>
+      <view class='commentbtn' bindtap='onTapSend'>
+        <image class='btnImage' src='/images/send.svg'></image>
+        <view class='btnText' bindtap='addComment'>发布影评</view>
+      </view>
+    </view>
+  </view>
+</view>
+

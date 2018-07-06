@@ -39,4 +39,6 @@ router.get('/homeComment', controllers.home.homeComment)
 router.get('/hotMovies',controllers.hotMovie.hotMovies)
 //get 获取电影详情
 router.get('/movieDetail', controllers.hotMovie.movieDetail)
+//put 添加电影评论
+router.put('/add',validationMiddleware,controllers.comment.add)
 module.exports = router

@@ -8,10 +8,10 @@ Page({
   data: {
     userInfo:null,
     movie:{},
-    commentType:1,
+    commentType:null,
     commentValue:null,
     ifRecord:0,
-    tempFilePath:''
+    commentDuration:null
   },
 
   onLoad: function (options) {
@@ -74,7 +74,7 @@ Page({
       }
     })
   },
-  onInput(){
+  onInput(event){
     this.setData({
       commentValue:event.detail.value.trim()
     })
@@ -89,10 +89,12 @@ Page({
   stopRecord(){
     console.log('结束')
     recorderManager.stop()
+
     recorderManager.onStop((res)=>{
       this.setData({
         ifRecord: 0,
-        tempFilePath : res.tempFilePath,
+        commentValue : res.tempFilePath,
+        commentDuration:res.duration
       })
       console.log(res)
     })
@@ -102,5 +104,8 @@ Page({
     // innerAudioContext.autoplay = true
     // innerAudioContext.src =this.data.tempFilePath
     // innerAudioContext.play()
+    wx.navigateTo({
+      url: '/pages/commentPreview/commentPreview?movie_id=' + this.data.movie.id + '&movie_title=' + this.data.movie.title + '&movie_image=' + this.data.movie.image + '&commentType=' + this.data.commentType + '&commentValue=' + this.data.commentValue + '&duration=' + this.data.commentDuration,
+    })
   }
 })

@@ -5,7 +5,8 @@
     "pages/movieDetail/movieDetail",
     "pages/getQX/getQX",
     "pages/loveComment/loveComment",
-    "pages/editComment/editComment"
+    "pages/editComment/editComment",
+    "pages/commentPreview/commentPreview"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",

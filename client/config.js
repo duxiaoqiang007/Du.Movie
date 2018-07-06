@@ -29,7 +29,9 @@ var config = {
         //获取热门电影
         hotMovies:`${host}/weapp/hotMovies`,
         //获取电影详情
-        movieDetail:`${host}/weapp/movieDetail`
+        movieDetail:`${host}/weapp/movieDetail`,
+        //添加电影评论
+        addComment:`${host}/weapp/add`
     }
 };
 
