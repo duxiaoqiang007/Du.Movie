@@ -1,0 +1,54 @@
+.page{
+  background: #F4F4F4;
+}
+.movie-card{
+  padding-top: 20rpx;
+  margin-left: 100rpx;
+  margin-right: 100rpx;
+}
+.movie-image{
+  width: 550rpx;
+  height: 800rpx;
+}
+.movie-title{
+  text-align:center;
+  font-size:40rpx;
+  line-height:56rpx;
+  opacity:0.8;
+  font-weight:bold;
+  margin-top:30rpx;
+}
+.btn{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #EBEBEB;
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+  align-items: center;
+}
+.hot-btn{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hot-image{
+  height: 60rpx;
+  width: 60rpx;
+  opacity: 0.7;
+  color: #0066ff;
+}
+.btn-text{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.8;
+  margin-left: 10rpx;
+}
+.my-btn{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
