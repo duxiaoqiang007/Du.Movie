@@ -23,7 +23,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -36,6 +36,12 @@
 					"name": "热门电影详情",
 					"pathName": "pages/movieDetail/movieDetail",
 					"query": "id=1"
+				},
+				{
+					"id": 2,
+					"name": "热门电影",
+					"pathName": "pages/editComment/editComment",
+					"query": "id=1&movie_id=1"
 				}
 			]
 		}

@@ -4,7 +4,8 @@
     "pages/hotMovies/hotMovies",
     "pages/movieDetail/movieDetail",
     "pages/getQX/getQX",
-    "pages/loveComment/loveComment"
+    "pages/loveComment/loveComment",
+    "pages/editComment/editComment"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",

@@ -1,0 +1,22 @@
+<view wx:if="{{!userInfo}}">
+  <view class='unlogin-card'>
+    <view class='unlogin-head'></view>
+    <view class='unlogin-info'>
+      <view class='unlogin-text'>未登陆</view>
+      <view class='unlogin-tips'>点击微信登陆</view>
+    </view>
+  </view>
+  <button class='unlogin-btn' open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登陆</button>
+</view>
+<view wx:if="{{userInfo}}">
+  <view class='movieCard'>
+    <image class='movieImage' src='{{movie.image}}'></image>
+    <view class='movieTitle'>{{movie.title}}</view>
+    <textarea wx:if='{{commentType==0}}' class='commentText' placeholder='请输入您的影评' bindinput='onInput'></textarea>
+    <view wx:if='{{commentType==1}}' class='commentVoice' bindtouchstart='startRecord' bindtouchend='stopRecord'>
+      <image class='voiceImage' src='/images/voice.svg'></image>
+      <view class="{{ifRecord==0?'voiceTextNoRecord':'voiceText'}}">录音</view>
+    </view>
+  </view>
+  <button bindtap='onTapFinish' type='primary' class='finish'>完成</button>
+</view>

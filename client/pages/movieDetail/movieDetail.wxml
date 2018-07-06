@@ -10,7 +10,7 @@
       </view>
       <view class='comment'>
         <image class='btnImage' src='/images/add_comment.svg'></image>
-        <view class='btnText'>添加影评</view>
+        <view class='btnText' bindtap='addComment'>添加影评</view>
       </view>
     </view>
   </view>

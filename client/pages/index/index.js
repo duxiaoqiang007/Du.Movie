@@ -6,20 +6,9 @@ Page({
   data: {
     homeMovie: {},
     homeComment:{},
-    userInfo:null
   },
   onLoad() {
     this.getMovie()
-  },
-  onShow(){
-    app.checkSession({
-      success: ({ userInfo }) => {
-        this.setData({
-          userInfo: userInfo
-        })
-        console.log(userInfo)
-      }
-    })
   },
   getMovie() {
     wx.showLoading({
@@ -89,47 +78,37 @@ Page({
     })
   },
   onTapMy(){
-    if(!this.data.userInfo){
-      wx.showModal({
-        title: '提示',
-        content: '您尚未登陆，是否登陆？',
-        success: res => {
-          if (res.confirm) {
-            this.login()
-          }
-          else {
-            wx.showToast({
-              icon:'none',
-              title: '登陆失败',
-            })
-          }
-        },
-        fail:res=>{
-          console.log(res)
-          wx.showToast({
-            icon: 'none',
-            title: '登陆失败',
-          })
-        }
-      })
-    }
-    else{
-      wx.navigateTo({
-        url: '../loveComment/loveComment',
-      })  
-    }
-  },
-  login(){
-    app.login({
-      success: ({ userInfo }) => {
-        this.setData({
-          userInfo: userInfo
-        })
-        console.log(userInfo)
-        wx.navigateTo({
-          url: '../loveComment/loveComment',
-        })
-      }
+    // if(!this.data.userInfo){
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '您尚未登陆，是否登陆？',
+    //     success: res => {
+    //       if (res.confirm) {
+    //         this.login()
+    //       }
+    //       else {
+    //         wx.showToast({
+    //           icon:'none',
+    //           title: '登陆失败',
+    //         })
+    //       }
+    //     },
+    //     fail:res=>{
+    //       console.log(res)
+    //       wx.showToast({
+    //         icon: 'none',
+    //         title: '登陆失败',
+    //       })
+    //     }
+    //   })
+    // }
+    // else{
+    //   wx.navigateTo({
+    //     url: '../loveComment/loveComment',
+    //   })  
+    // }
+    wx.navigateTo({
+      url: '../loveComment/loveComment',
     })
-  }
+  },
 })

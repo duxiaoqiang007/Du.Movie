@@ -16,16 +16,12 @@ App({
             content: '微信小程序需要您授权获取用户信息',
             showCancel: true,
             success: () => {
-              // wx.openSetting({
-              //   success: res => {
-              //     if (res.authSetting['scope.userInfo'] === true) {
-              //       this.doQcloudLogin({ success, error })
-              //     }
-              //   }
-              // })
               wx.navigateTo({
                 url: '../getQX/getQX'
               })
+            },
+            fail:res=>{
+              console.log('不让登陆')
             }
           })
         }

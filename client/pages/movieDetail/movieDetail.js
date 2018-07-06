@@ -43,5 +43,18 @@ Page({
         })
       }
     })
+  },
+  addComment(){
+    wx.showActionSheet({
+      itemList: ['文字','音频'],
+      success:res=>{
+        wx.navigateTo({
+          url: '../editComment/editComment?type='+res.tapIndex+'&movie_id='+this.data.movie.id,
+        })
+      },
+      fail:res=>{
+        console.log(res)
+      }
+    })
   }
 })
