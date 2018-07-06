@@ -12,7 +12,7 @@
       <image class='hot-image' src='/images/zan.svg'></image>
       <view class='btn-text'>热门</view>
     </view>
-    <view class='my-btn'>
+    <view class='my-btn' bindtap='onTapMy'>
       <image class='hot-image' src='/images/my.svg'></image>
       <view class='btn-text'>我的</view>
     </view>
