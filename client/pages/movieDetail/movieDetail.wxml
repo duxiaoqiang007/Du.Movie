@@ -1,2 +1,17 @@
-<!--pages/movieDetail/movieDetail.wxml-->
-<text>pages/movieDetail/movieDetail.wxml</text>
+<view class='all'>
+  <view class='movieCard'>
+    <image class='movieImage' src='{{movie.image}}'></image>
+    <view class='movieTitle'>{{movie.title}}</view>
+    <view class='movieDescription'>{{movie.description}}</view>
+    <view class='btn'>
+      <view class='comment'>
+        <image class='btnImage' src='/images/see_list.svg'></image>
+        <view class='btnText'>查看影评</view>
+      </view>
+      <view class='comment'>
+        <image class='btnImage' src='/images/add_comment.svg'></image>
+        <view class='btnText'>添加影评</view>
+      </view>
+    </view>
+  </view>
+</view>

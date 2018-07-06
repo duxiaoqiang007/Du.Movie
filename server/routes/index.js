@@ -37,4 +37,6 @@ router.get('/homeMovie',controllers.home.homeMovie)
 router.get('/homeComment', controllers.home.homeComment)
 //get 获取热门电影
 router.get('/hotMovies',controllers.hotMovie.hotMovies)
+//get 获取电影详情
+router.get('/movieDetail', controllers.hotMovie.movieDetail)
 module.exports = router

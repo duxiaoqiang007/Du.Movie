@@ -68,6 +68,11 @@ Page({
       }
     })   
   },
+  onTapMovieDetail(){
+    wx.navigateTo({
+      url: '../movieDetail/movieDetail?id=1',
+    })
+  },
   onTapHotMovie(){
     wx.navigateTo({
       url: '../hotMovies/hotMovies',

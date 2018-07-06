@@ -1,66 +1,47 @@
-// pages/movieDetail/movieDetail.js
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
+var config = require('../../config')
+var util = require('../../utils/util.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    movie:{}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    let id = options.id
+    this.getMovideDetail(id)
+    wx.setNavigationBarColor({
+      frontColor: '#000000',
+      backgroundColor:'#ffffff'
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  getMovideDetail(id){
+    wx.showLoading({
+      title: '电影加载中...',
+    })
+    qcloud.request({
+      url:config.service.movieDetail,
+      data:{
+        id:id
+      },
+      success:res=>{
+        wx.hideLoading()
+        console.log(res.data.data)
+        if(!res.data.code){
+          this.setData({
+            movie:res.data.data[0]
+          })
+        }
+        else{
+          wx.showToast({
+            title: '加载失败',
+          })
+        }
+      },
+      Error:res=>{
+        wx.hideLoading()
+        wx.showToast({
+          title: '加载失败',
+        })
+      }
+    })
   }
 })

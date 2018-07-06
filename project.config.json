@@ -23,12 +23,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
 					"name": "热门电影",
-					"pathName": "pages/hotMovies/hotMovies"
+					"pathName": "pages/hotMovies/hotMovies",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "热门电影详情",
+					"pathName": "pages/movieDetail/movieDetail",
+					"query": "id=1"
 				}
 			]
 		}

@@ -27,7 +27,9 @@ var config = {
         //获取首页评论
         homeComment: `${host}/weapp/homeComment`,
         //获取热门电影
-        hotMovies:`${host}/weapp/hotMovies`
+        hotMovies:`${host}/weapp/hotMovies`,
+        //获取电影详情
+        movieDetail:`${host}/weapp/movieDetail`
     }
 };
 
