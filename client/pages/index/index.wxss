@@ -1,6 +1,7 @@
-.page{
+ .page{
   background: #F4F4F4;
-}
+  padding-bottom: 100rpx;
+} 
 .movie-card{
   padding-top: 20rpx;
   margin-left: 100rpx;
@@ -18,6 +19,24 @@
   font-weight:bold;
   margin-top:30rpx;
 }
+.movie-comment{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.user-avatarUrl{
+  height: 80rpx;
+  width:80rpx;
+  border-radius: 50%;
+}
+.user-nickName{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  font-weight: bold;
+  opacity: 0.7;
+}
 .btn{
   position: absolute;
   bottom: 0;
@@ -33,6 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-right: 1rpx solid
 }
 .hot-image{
   height: 60rpx;

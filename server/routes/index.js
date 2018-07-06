@@ -33,4 +33,8 @@ router.get('/message', controllers.message.get)
 router.post('/message', controllers.message.post)
 //get 获取首页电影
 router.get('/homeMovie',controllers.home.homeMovie)
+//get 获取首页电影评论
+router.get('/homeComment', controllers.home.homeComment)
+//get 获取热门电影
+router.get('/hotMovies',controllers.hotMovie.hotMovies)
 module.exports = router

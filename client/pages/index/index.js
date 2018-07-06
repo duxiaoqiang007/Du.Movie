@@ -5,12 +5,11 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
-    homeMovie: {}
-    // homeComment:{}
+    homeMovie: {},
+    homeComment:{}
   },
   onLoad() {
     this.getMovie()
-    // this.getComment()
   },
   getMovie() {
     wx.showLoading({
@@ -25,6 +24,7 @@ Page({
           this.setData({
             homeMovie: res.data.data[0]
           })
+          this.getComment()
         }
         else {
           wx.showToast({
@@ -40,32 +40,37 @@ Page({
       }
     })
   },
-  // getComment(){
-  //   wx.showLoading({
-  //     title: '评论加载中...',
-  //   })
-  //   qcloud.request({
-  //     url: config.service.homeComment,
-  //     success: res => {
-  //       wx.hideLoading()
-  //       console.log(res.data.data)
-  //       if (!res.data.code) {
-  //         this.setData({
-  //           homeComment: res.data.data[0]
-  //         })
-  //       }
-  //       else {
-  //         wx.showToast({
-  //           title: '评论加载失败',
-  //         })
-  //       }
-  //     },
-  //     error: res => {
-  //       wx.hideLoading()
-  //       wx.showToast({
-  //         title: '评论加载失败',
-  //       })
-  //     }
-  //   })   
-  // }
+  getComment(){
+    wx.showLoading({
+      title: '评论加载中...',
+    })
+    qcloud.request({
+      url: config.service.homeComment,
+      success: res => {
+        wx.hideLoading()
+        console.log(res.data.data)
+        if (!res.data.code) {
+          this.setData({
+            homeComment: res.data.data[0]
+          })
+        }
+        else {
+          wx.showToast({
+            title: '评论加载失败',
+          })
+        }
+      },
+      error: res => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '评论加载失败',
+        })
+      }
+    })   
+  },
+  onTapHotMovie(){
+    wx.navigateTo({
+      url: '../hotMovies/hotMovies',
+    })
+  }
 })

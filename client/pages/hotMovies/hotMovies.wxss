@@ -1,0 +1,29 @@
+.hotMovies{
+  display: flex;
+  flex-direction: column;
+  margin: 30rpx;
+}
+.movieCard{
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.movieImages{
+  height: 400rpx;
+  width: 300rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  margin-right: 30rpx;
+}
+.movieTitile{
+  font-size: 36rpx;
+  line-height: 50rpx;
+  font-weight: bold;
+  padding-bottom: 50rpx;
+}
+.movieCatefory{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.6
+}

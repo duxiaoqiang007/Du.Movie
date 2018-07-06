@@ -23,7 +23,11 @@ var config = {
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`,
         //获取首页电影
-        homeMovie: `${host}/weapp/homeMovie`
+        homeMovie: `${host}/weapp/homeMovie`,
+        //获取首页评论
+        homeComment: `${host}/weapp/homeComment`,
+        //获取热门电影
+        hotMovies:`${host}/weapp/hotMovies`
     }
 };
 

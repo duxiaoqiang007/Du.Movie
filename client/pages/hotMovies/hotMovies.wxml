@@ -1,0 +1,9 @@
+<view class='hotMovies' wx:for='{{hotMovies}}' wx:key='id'>
+  <navigator class='movieCard' url="/pages/movieDetail/movieDetail?id={{item.id}}">
+    <image class='movieImages' src='{{item.image}}'></image>
+    <view class='movieInfo'>
+      <view class='movieTitile'>{{item.title}}</view>
+      <view class='movieCatefory'>类型：{{item.category}}</view>   
+    </view>
+  </navigator>
+</view>
