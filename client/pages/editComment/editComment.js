@@ -97,7 +97,30 @@ Page({
         commentDuration:res.duration
       })
       console.log(res)
+      this.setTimeOut(res.tempFilePath)
     })
+  },
+  setTimeOut(path){
+    wx.uploadFile({
+      url: config.service.uploadUrl,
+      filePath: path,
+      name: 'voice',
+      // header:{
+      //   'content-type':'multipart/form-data'
+      // },
+      formData:{
+        user:this.data.userInfo.openId,
+        movie_id:this.data.movie.id
+      },
+      success:res=>{
+        var str = res.data
+        console.log(str,res.statusCode,3435)
+      },
+      fail:res=>{
+        console.log(res)
+      }
+    })
+
   },
   onTapFinish(){
     //测试播放

@@ -11,5 +11,10 @@ module.exports = {
     }
     ctx.state.data = {}
   },
-
+  list:async ctx=>{
+    let movie_id = +ctx.request.query.movie_id
+    if(!isNaN(movie_id)){
+      ctx.state.data = await DB.query('SELECT comment.comment_type,comment.comment,user.nickName,user.avatarUrl FROM `comment`,user WHERE comment.user = user.user AND comment.movie_id =?', [movie_id])
+    }
+  }
 }

@@ -33,7 +33,7 @@
       </view>
       <view class='commentbtn' bindtap='onTapSend'>
         <image class='btnImage' src='/images/send.svg'></image>
-        <view class='btnText' bindtap='addComment'>发布影评</view>
+        <view class='btnText'>发布影评</view>
       </view>
     </view>
   </view>

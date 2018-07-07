@@ -96,6 +96,9 @@ Page({
           wx.showToast({
             title: '评论完成',
           })
+          wx.navigateTo({
+            url: '/pages/commentList/commentList?movie_id='+this.data.movie.id,
+          })
         } else {
           wx.showToast({
             icon: 'none',

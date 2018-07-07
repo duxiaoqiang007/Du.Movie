@@ -31,7 +31,9 @@ var config = {
         //获取电影详情
         movieDetail:`${host}/weapp/movieDetail`,
         //添加电影评论
-        addComment:`${host}/weapp/add`
+        addComment:`${host}/weapp/add`,
+        //获取电影评论列表
+        getCommentList:`${host}/weapp/list`
     }
 };
 

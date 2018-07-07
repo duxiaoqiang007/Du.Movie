@@ -1,0 +1,14 @@
+<view class='commentList' wx:for='{{commentList}}' wx:id='id'>
+  <view class='comment-card'>
+    <view class='userInfo'>
+      <image class='user-avatarurl' src='{{item.avatarUrl}}'></image>
+      <view class='user-nickName'>{{item.nickName}}</view>    
+    </view>
+    <view class='commentText' wx:if='{{item.comment_type==0}}'>{{item.comment}}</view>
+    <view wx:if='{{item.comment_type==1}}' class='voice'>
+      <image bindtap='onTapVoice' data-id='{{index}}' class='voiceImage'src='{{srcImage[index].image}}' ></image>
+      <view class='duration'>{{duration/1000}}S</view>
+    </view>
+  </view>
+</view>
+<view class='btn'>回到首页</view>
