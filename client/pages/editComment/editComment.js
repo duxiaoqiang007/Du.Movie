@@ -4,6 +4,14 @@ var config = require('../../config')
 var util = require('../../utils/util.js')
 const recorderManager = wx.getRecorderManager()
 const innerAudioContext = wx.createInnerAudioContext()
+const options = {
+  duration: 10000,//指定录音的时长，单位 ms
+  sampleRate: 16000,//采样率
+  numberOfChannels: 1,//录音通道数
+  encodeBitRate: 96000,//编码码率
+  format: 'mp3',//音频格式，有效值 aac/mp3
+  frameSize: 50,//指定帧大小，单位 KB
+}
 Page({
   data: {
     userInfo:null,
@@ -84,7 +92,7 @@ Page({
     this.setData({
       ifRecord:1
     })
-    recorderManager.start()
+    recorderManager.start(options)
   },
   stopRecord(){
     console.log('结束')
@@ -97,30 +105,7 @@ Page({
         commentDuration:res.duration
       })
       console.log(res)
-      this.setTimeOut(res.tempFilePath)
     })
-  },
-  setTimeOut(path){
-    wx.uploadFile({
-      url: config.service.uploadUrl,
-      filePath: path,
-      name: 'voice',
-      // header:{
-      //   'content-type':'multipart/form-data'
-      // },
-      formData:{
-        user:this.data.userInfo.openId,
-        movie_id:this.data.movie.id
-      },
-      success:res=>{
-        var str = res.data
-        console.log(str,res.statusCode,3435)
-      },
-      fail:res=>{
-        console.log(res)
-      }
-    })
-
   },
   onTapFinish(){
     //测试播放
