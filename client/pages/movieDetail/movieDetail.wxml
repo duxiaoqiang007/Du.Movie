@@ -6,7 +6,7 @@
     <view class='btn'>
       <view class='comment'>
         <image class='btnImage' src='/images/see_list.svg'></image>
-        <view class='btnText'>查看影评</view>
+        <view class='btnText' bindtap='seeComment'>查看影评</view>
       </view>
       <view class='comment'>
         <image class='btnImage' src='/images/add_comment.svg'></image>

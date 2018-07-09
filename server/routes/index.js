@@ -43,4 +43,6 @@ router.get('/movieDetail', controllers.hotMovie.movieDetail)
 router.put('/add',validationMiddleware,controllers.comment.add)
 //get 获取影评列表
 router.get('/list',validationMiddleware,controllers.comment.list)
+//get 获取影评详情
+router.get('/detail',validationMiddleware,controllers.comment.detail)
 module.exports = router

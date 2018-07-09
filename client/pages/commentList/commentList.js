@@ -8,10 +8,14 @@ Page({
   data: {
     userInfo:null,
     commentList:[],
+    movie_id:null,
     srcImage: []
   },
   onLoad: function (options) {
     let movie_id =  options.movie_id
+    this.setData({
+      movie_id:movie_id
+    })
     this.getCommentList(movie_id)
   },
   getCommentList(movie_id){
@@ -27,10 +31,8 @@ Page({
         wx.hideLoading()
         console.log(res.data.data)
         if (!res.data.code) {
-          this.setData({
-            commentList: res.data.data
-          })
-        this.setSrcImage(res.data.data.length)       
+          this.setCommentList(res.data.data)
+          this.setSrcImage(res.data.data.length)       
         }
         else {
           wx.showToast({
@@ -45,6 +47,24 @@ Page({
         })
       }
     }) 
+  },
+  setCommentList(commentList){
+    for (let i = 0; i < commentList.length;i++){
+      if (commentList[i].comment_type==1){
+        wx.downloadFile({
+          url: commentList[i].comment,
+          success:res=>{
+            commentList[i].comment = res.tempFilePath
+          },
+          fail:res=>{
+            console.log(res)
+          }
+        })
+      }
+    }
+    this.setData({
+      commentList: commentList
+    })
   },
   setSrcImage(length){
     let srcImage = []
@@ -80,7 +100,15 @@ Page({
       innerAudioContext.autoplay = true
       innerAudioContext.src = this.data.commentList[index].comment
       console.log(this.data.commentList[index].comment)
+      console.log(innerAudioContext.duration)
       innerAudioContext.play()
+      innerAudioContext.onEnded(res=>{
+        innerAudioContext.stop()
+        srcImage[index].image = '/images/play_circle.svg'
+        this.setData({
+          srcImage: srcImage
+        })
+      })
     }
     else {
       srcImage[index].image = '/images/play_circle.svg'
@@ -90,4 +118,12 @@ Page({
       innerAudioContext.pause()
     }
   },
+  onTapBackHome(){
+    wx.navigateTo({
+      url: '/pages/index/index',
+    })
+  },
+  onTapAdd(){
+    wx.navigateBack({})
+  }
 })

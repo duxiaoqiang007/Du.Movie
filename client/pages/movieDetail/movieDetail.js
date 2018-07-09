@@ -56,5 +56,10 @@ Page({
         console.log(res)
       }
     })
+  },
+  seeComment(){
+    wx.navigateTo({
+      url: '/pages/commentList/commentList?movie_id='+this.data.movie.id,
+    })
   }
 })
