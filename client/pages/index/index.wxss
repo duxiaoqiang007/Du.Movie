@@ -1,7 +1,3 @@
- .page{
-  background: #F4F4F4;
-  padding-bottom: 100rpx;
-} 
 .movie-card{
   padding-top: 20rpx;
   margin-left: 100rpx;

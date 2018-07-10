@@ -120,4 +120,7 @@ Page({
       innerAudioContext.pause()
     }
   },
+  onTapBackHome(){
+    wx.navigateBack({})
+  }
 })

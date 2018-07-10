@@ -1,22 +1,18 @@
-<view class='page'>
-  <view bindtap='onTapMovieDetail' class='movie-card'>
-    <image class='movie-image' src='{{homeMovie.image}}'></image>
-    <view class='movie-title'>{{homeMovie.title}}</view>
+<view bindtap='onTapMovieDetail' class='movie-card'>
+  <image class='movie-image' src='{{homeMovie.image}}'></image>
+  <view class='movie-title'>{{homeMovie.title}}</view>
+</view>
+<view class='movie-comment' bindtap='onTapCommentDetail'>
+  <image class='user-avatarUrl' src='{{homeComment.avatarUrl}}'></image>
+  <view class='user-nickName'>{{homeComment.nickName}}给您推荐了一部电影</view>
+</view>
+<view class='btn'>
+  <view class='hot-btn' bindtap='onTapHotMovie'>
+    <image class='hot-image' src='/images/zan.svg'></image>
+    <view class='btn-text'>热门</view>
   </view>
-  <view class='movie-comment' bindtap='onTapCommentDetail'>
-    <image class='user-avatarUrl' src='{{homeComment.avatarUrl}}'></image>
-    <view class='user-nickName'>{{homeComment.nickName}}给您推荐了一部电影</view>
-  </view>
-  <view class='btn'>
-    <view class='hot-btn' bindtap='onTapHotMovie'>
-      <image class='hot-image' src='/images/zan.svg'></image>
-      <view class='btn-text'>热门</view>
-    </view>
-    <view class='my-btn' bindtap='onTapMy'>
-      <image class='hot-image' src='/images/my.svg'></image>
-      <view class='btn-text'>我的</view>
-    </view>
+  <view class='my-btn' bindtap='onTapMy'>
+    <image class='hot-image' src='/images/my.svg'></image>
+    <view class='btn-text'>我的</view>
   </view>
 </view>
-
-

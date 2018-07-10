@@ -36,3 +36,4 @@
     </view>
   </view>
 </view>
+<button bindtap='onTapBackHome' type='primary' class='btn'>回到首页</button>
