@@ -4,7 +4,7 @@
   <view class='btnAdd' bindtap='onTapAdd'>添加评论</view>
 </view>
  <view wx:if='{{commentList.length > 0}}' class='commentList' >
-  <navigator url='/pages/commentDetail/commentDetail?comment_id={{item.id}}&movie_id={{movie_id}}'  class='comment-card' wx:for='{{commentList}}' wx:id='id'>
+  <navigator url='/pages/commentDetail/commentDetail?comment_id={{item.id}}&movie_id={{movie_id}}'  class='comment-card' wx:for='{{commentList}}' wx:key='id'>
     <view class='userInfo'>
       <image class='user-avatarurl' src='{{item.avatarUrl}}'></image>
       <view class='user-nickName'>{{item.nickName}}</view>    

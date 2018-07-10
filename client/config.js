@@ -35,7 +35,15 @@ var config = {
         //获取电影评论列表
         getCommentList:`${host}/weapp/list`,
         //获取影评详情
-        getCommentDetail:`${host}/weapp/detail`
+        getCommentDetail:`${host}/weapp/detail`,
+        //添加收藏影评
+        addLikeComment:`${host}/weapp/addLikeComment`,
+        //获取收藏影评列表
+        getLikeComment:`${host}/weapp/getLikeComment`,
+        //获取是否收藏过该影评
+        getIfLike: `${host}/weapp/getIfLike`,
+        //删除收藏影评
+        deleteLike: `${host}/weapp/deleteLike`
     }
 };
 

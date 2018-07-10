@@ -27,7 +27,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -52,6 +52,18 @@
 					"name": "影评列表",
 					"pathName": "pages/commentList/commentList",
 					"query": "movie_id=1"
+				},
+				{
+					"id": 4,
+					"name": "影评详情",
+					"pathName": "pages/commentDetail/commentDetail",
+					"query": "comment_id=2&movie_id=1"
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/loveComment/loveComment",
+					"query": ""
 				}
 			]
 		}

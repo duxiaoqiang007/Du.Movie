@@ -45,4 +45,12 @@ router.put('/add',validationMiddleware,controllers.comment.add)
 router.get('/list',validationMiddleware,controllers.comment.list)
 //get 获取影评详情
 router.get('/detail',validationMiddleware,controllers.comment.detail)
+//put 添加收藏影评
+router.put('/addLikeComment', validationMiddleware, controllers.comment.addLikeComment)
+//get 获取收藏影评列表
+router.get('/getLikeComment', validationMiddleware, controllers.comment.getLikeComment)
+//get 获取某影评是否收藏过
+router.get('/getIfLike', validationMiddleware, controllers.comment.getIfLike)
+//delete 取消收藏
+router.delete('/deleteLike', validationMiddleware, controllers.comment.deleteLike)
 module.exports = router

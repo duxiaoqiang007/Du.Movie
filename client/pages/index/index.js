@@ -47,7 +47,7 @@ Page({
       url: config.service.homeComment,
       success: res => {
         wx.hideLoading()
-        console.log(res.data.data)
+        console.log('homeComment',res.data.data)
         if (!res.data.code) {
           this.setData({
             homeComment: res.data.data[0]
@@ -77,37 +77,13 @@ Page({
       url: '../hotMovies/hotMovies',
     })
   },
-  onTapMy(){
-    // if(!this.data.userInfo){
-    //   wx.showModal({
-    //     title: '提示',
-    //     content: '您尚未登陆，是否登陆？',
-    //     success: res => {
-    //       if (res.confirm) {
-    //         this.login()
-    //       }
-    //       else {
-    //         wx.showToast({
-    //           icon:'none',
-    //           title: '登陆失败',
-    //         })
-    //       }
-    //     },
-    //     fail:res=>{
-    //       console.log(res)
-    //       wx.showToast({
-    //         icon: 'none',
-    //         title: '登陆失败',
-    //       })
-    //     }
-    //   })
-    // }
-    // else{
-    //   wx.navigateTo({
-    //     url: '../loveComment/loveComment',
-    //   })  
-    // }
+  onTapCommentDetail(){
     wx.navigateTo({
+      url: '/pages/commentDetail/commentDetail?comment_id='+this.data.homeComment.id+'&movie_id='+this.data.homeMovie.id,
+    })
+  },
+  onTapMy(){
+     wx.navigateTo({
       url: '../loveComment/loveComment',
     })
   },

@@ -1,1 +1,115 @@
-/* pages/loveComment/loveComment.wxss */
+.null-card{
+  position: relative;
+  margin:32rpx 52rpx 0;
+  height: 360rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0,0,0,0.2);
+  border-radius: 13rpx;
+}
+.null-image{
+  position: absolute;
+  top: 10rpx;
+  left: 240rpx;
+  height: 200rpx;
+  width: 200rpx;
+  opacity: 0.4;
+}
+.null-text{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.4;
+  font-weight: bold;
+  position: absolute;
+  top:250rpx;
+  width: 646rpx;
+  text-align: center;
+}
+.btnAdd{
+  width: 300rpx;
+  height: 100rpx;
+  background: #F5E069;
+  font-size: 35rpx;
+  line-height: 100rpx;
+  opacity: 0.8;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 400rpx;
+  left: 180rpx;
+}
+.likeText{
+  margin: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.8;
+  font-weight: bold;
+  color: #99ff00
+}
+.likeCommentList{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+.commentCard{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.movieImage{
+  width: 300rpx;
+  height: 400rpx;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 30rpx;
+  width: 460rpx;
+}
+.movieTitle{
+  font-size: 36rpx;
+  line-height: 50rpx;
+  opacity: 0.8;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+}
+.commentText{
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.7;
+  word-break: break-all;
+}
+.voice{
+  display: flex;
+  border: 1rpx solid #E0EEEE;
+  background-color: #CFCFCF;
+  height: 60rpx;
+  align-items: center;
+  width: 300rpx;
+}
+.voiceImage{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 50rpx;
+}
+.duration{
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  opacity: 0.8
+}
+.userAvatarUrl{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.userInfo{
+  display: flex;
+  margin-top: 30rpx;
+  align-items: center;
+}
+.userNickName{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  font-weight: bold;
+  opacity: 0.7;
+}

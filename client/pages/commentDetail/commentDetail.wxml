@@ -28,8 +28,10 @@
     </view>
     <view class='btn'>
       <view class='commentbtn' bindtap='onTapLike'>
-        <image class='btnImage' src='/images/nolike.svg'></image>
-        <view class='btnText'>收藏影评</view>
+        <image wx:if='{{ifLike==false}}' class='btnImage' src='/images/nolike.svg'></image>
+        <view wx:if='{{ifLike==false}}' class='btnText'>收藏影评</view>     
+        <image wx:if='{{ifLike==true}}' class='btnImage' src='/images/like.svg'></image>
+        <view wx:if='{{ifLike==true}}' class='btnText'>取消收藏</view>         
       </view>
       <view class='commentbtn' bindtap='addComment'>
         <image class='btnImage' src='/images/write.svg'></image>

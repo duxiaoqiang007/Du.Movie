@@ -23,5 +23,33 @@ module.exports = {
     if(!isNaN(comment_id)){
       ctx.state.data = await DB.query('SELECT comment.id, comment.comment_type,comment.comment,comment.voice_duration,user.nickName,user.avatarUrl FROM `comment`,user WHERE comment.user = user.user AND comment.id =?',[comment_id])
     }
+  },
+  addLikeComment: async ctx=>{
+    let user = ctx.state.$wxInfo.userinfo.openId
+    let movie_id = +ctx.request.body.movie_id || null
+    let comment_id = +ctx.request.body.comment_id || null
+    if(!isNaN(comment_id)){
+      await DB.query('insert into like_comment(comment_id,movie_id,user) values(?,?,?)',[comment_id,movie_id,user])
+    }
+    ctx.state.data={}
+  },
+  getLikeComment:async ctx=>{
+    let user = ctx.state.$wxInfo.userinfo.openId
+    ctx.state.data = await DB.query('SELECT like_comment.comment_id, like_comment.movie_id, movies.title, movies.image, comment.comment_type, comment.comment, comment.voice_duration, user.avatarUrl, user.nickName FROM like_comment, movies, comment, user WHERE movies.id = like_comment.movie_id AND comment.id = like_comment.comment_id AND user.user = like_comment.user AND like_comment.user = ?',[user])
+
+  },
+  getIfLike: async ctx=>{
+    let user = ctx.state.$wxInfo.userinfo.openId
+    let movie_id = +ctx.request.query.movie_id || null
+    let comment_id = +ctx.request.query.comment_id || null
+    if(!isNaN(movie_id)&&!isNaN(comment_id)){
+      ctx.state.data = await DB.query('SELECT * FROM like_comment WHERE like_comment.comment_id=? AND like_comment.movie_id=? AND like_comment.user=?', [comment_id, movie_id, user])
+    }
+  },
+  deleteLike:async ctx=>{
+    let id = ctx.request.body.id || null
+    if(!isNaN(id)){
+      await DB.query('delete from like_comment where like_comment.id=?',[id])
+    }
   }
 }

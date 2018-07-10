@@ -9,7 +9,9 @@ Page({
     movie:{},
     userInfo:null,
     comment_id:null,
-    srcImage:null
+    srcImage:null,
+    ifLike:false,
+    likeCommentId:null
   },
   onLoad: function (options) {
     let comment_id = options.comment_id
@@ -19,6 +21,7 @@ Page({
       comment_id:comment_id
     })
     this.getMovieDetail(movie_id)
+    this.getIfLike(comment_id,movie_id)
   },
   onShow(){
     app.checkSession({
@@ -77,6 +80,37 @@ Page({
     console.log(comment)
     this.setData({
       comment: comment
+    })
+  },
+  getIfLike(comment_id,movie_id){
+    qcloud.request({
+      url: config.service.getIfLike,
+      data: {
+        comment_id: comment_id,
+        movie_id: movie_id
+      },
+      success: res => {
+        console.log(res.data.data)
+        if (!res.data.code) {
+            if(res.data.data.length>0){
+              this.setData({
+                ifLike:true,
+                likeCommentId:res.data.data[0].id
+              })
+            }
+        }
+        else {
+          wx.showToast({
+            title: '判断失败',
+          })
+        }
+      },
+      error: res => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '判断失败',
+        })
+      }
     })
   },
   setSrcImage() {
@@ -144,7 +178,79 @@ Page({
     }
   },
   onTapLike(){
-    
+    if(this.data.ifLike==false){
+      wx.showLoading({
+        title: '收藏中...',
+      })
+      qcloud.request({
+        url: config.service.addLikeComment,
+        login: true,
+        method: 'PUT',
+        data: {
+          movie_id: this.data.movie.id,
+          comment_id: this.data.comment_id
+        },
+        success: res => {
+          wx.hideLoading()
+          let data = res.data
+          if (!data.code) {
+            wx.showToast({
+              title: '收藏完成',
+            })
+            this.setData({
+              ifLike:true
+            })
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '收藏失败',
+            })
+          }
+        },
+        fail: res => {
+          console.log(res)
+          wx.hideLoading()
+          wx.showToast({
+            icon: 'none',
+            title: '收藏失败',
+          })
+        }
+      })
+    }else{
+      qcloud.request({
+        url: config.service.deleteLike,
+        login: true,
+        method: 'DELETE',
+        data: {
+          id: this.data.likeCommentId
+        },
+        success: res => {
+          wx.hideLoading()
+          let data = res.data
+          if (!data.code) {
+            wx.showToast({
+              title: '完成取消',
+            })
+            this.setData({
+              ifLike: false
+            })
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '取消失败',
+            })
+          }
+        },
+        fail: res => {
+          console.log(res)
+          wx.hideLoading()
+          wx.showToast({
+            icon: 'none',
+            title: '取消失败',
+          })
+        }
+      })     
+    }
   },
   addComment() {
     wx.showActionSheet({

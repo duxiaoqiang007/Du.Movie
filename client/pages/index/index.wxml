@@ -3,7 +3,7 @@
     <image class='movie-image' src='{{homeMovie.image}}'></image>
     <view class='movie-title'>{{homeMovie.title}}</view>
   </view>
-  <view class='movie-comment'>
+  <view class='movie-comment' bindtap='onTapCommentDetail'>
     <image class='user-avatarUrl' src='{{homeComment.avatarUrl}}'></image>
     <view class='user-nickName'>{{homeComment.nickName}}给您推荐了一部电影</view>
   </view>
