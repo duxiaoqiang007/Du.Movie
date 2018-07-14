@@ -35,6 +35,8 @@ router.post('/message', controllers.message.post)
 router.get('/homeMovie',controllers.home.homeMovie)
 //get 获取首页电影评论
 router.get('/homeComment', controllers.home.homeComment)
+//put 上传用户信息
+router.put('/insertUser',validationMiddleware,controllers.insertuser.insertUser)
 //get 获取热门电影
 router.get('/hotMovies',controllers.hotMovie.hotMovies)
 //get 获取电影详情

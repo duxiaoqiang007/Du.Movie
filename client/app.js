@@ -54,8 +54,9 @@ App({
       success: res => {
         if (res) {
           let userInfo = res
+          this.insertUserInfo()
           success && success({
-            userInfo
+            userInfo,
           })
         } else {
           //不是首次登陆，需要手动获得用户信息
@@ -90,6 +91,37 @@ App({
       },
       fail: () => {
         error && error()
+      }
+    })
+  },
+  insertUserInfo(){
+    qcloud.request({
+      url: config.service.insertUser,
+      login: true,
+      method: 'PUT',
+      data: {
+      },
+      success: res => {
+        wx.hideLoading()
+        let data = res.data
+        if (!data.code) {
+          wx.showToast({
+            title: '登陆完成',
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '登陆失败',
+          })
+        }
+      },
+      fail: res => {
+        console.log(res)
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '登陆失败lllll',
+        })
       }
     })
   }

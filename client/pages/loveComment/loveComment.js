@@ -18,7 +18,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getLikeCommentList()
+    if (this.data.userInfo){
+      this.getLikeCommentList()
+    }
   },
   onShow() {
     app.checkSession({
@@ -37,6 +39,7 @@ Page({
           userInfo: userInfo
         })
         console.log(userInfo)
+        this.getLikeCommentList()
       }
     })
   },

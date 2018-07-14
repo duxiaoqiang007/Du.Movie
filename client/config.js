@@ -28,6 +28,8 @@ var config = {
         homeComment: `${host}/weapp/homeComment`,
         //获取热门电影
         hotMovies:`${host}/weapp/hotMovies`,
+        //上传用户信息
+        insertUser:`${host}/weapp/insertUser`,
         //获取电影详情
         movieDetail:`${host}/weapp/movieDetail`,
         //添加电影评论
