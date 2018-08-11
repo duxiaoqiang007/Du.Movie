@@ -55,4 +55,6 @@ router.get('/getLikeComment', validationMiddleware, controllers.comment.getLikeC
 router.get('/getIfLike', validationMiddleware, controllers.comment.getIfLike)
 //delete 取消收藏
 router.delete('/deleteLike', validationMiddleware, controllers.comment.deleteLike)
+//获取编辑过的影评
+router.get('/getEditComment',validationMiddleware,controllers.comment.getEditComment)
 module.exports = router

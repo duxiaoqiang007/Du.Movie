@@ -51,5 +51,9 @@ module.exports = {
     if(!isNaN(id)){
       await DB.query('delete from like_comment where like_comment.id=?',[id])
     }
+  },
+  getEditComment:async ctx=>{
+    let user = ctx.state.$wxInfo.userinfo.openId
+    ctx.state.data = await DB.query('select comment.id,comment.comment_type,comment.comment,comment.voice_duration,movies.title,movies.image from comment ,movies where comment.movie_id = movies.id and comment.user=?',[user])
   }
 }

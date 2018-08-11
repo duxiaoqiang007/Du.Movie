@@ -45,7 +45,9 @@ var config = {
         //获取是否收藏过该影评
         getIfLike: `${host}/weapp/getIfLike`,
         //删除收藏影评
-        deleteLike: `${host}/weapp/deleteLike`
+        deleteLike: `${host}/weapp/deleteLike`,
+        //获取编辑的影评列表
+        getEditComment:`${host}/weapp/getEditComment`
     }
 };
 

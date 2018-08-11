@@ -9,31 +9,61 @@
   <button class='unlogin-btn' open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登陆</button>
 </view>
 <view wx:else>
-  <view wx:if='{{likeCommentList.length==0}}'>
-    <view class='null-card' wx:if='{{commentList.length == 0}}'>
-      <image class='null-image' src='/images/null.jpg'></image>
-      <view class='null-text'>暂无收藏，快来添加第一条收藏吧！</view>
+  <view wx:if='{{ifLikeComment==true}}'>
+    <view wx:if='{{likeCommentList.length==0}}'>
+      <view class='null-card'>
+        <image class='null-image' src='/images/null.jpg'></image>
+        <view class='null-text'>暂无收藏，快来添加第一条收藏吧！</view>
+      </view>
     </view>
-  </view>
-  <view wx:if='{{likeCommentList.length>0}}'>
-    <view class='likeText'>收藏的影评√</view>
-    <view class='likeCommentList'>
-      <view class='commentCard' wx:for='{{likeCommentList}}' wx:key='id'>
-        <image class='movieImage' src='{{item.image}}'></image>
-        <view class='info'>
-          <view class='movieTitle'>{{item.title}}</view>
-          <view class='commentText' wx:if='{{item.comment_type==0}}'>{{item.comment}}</view>
-          <view wx:if='{{item.comment_type==1}}' class='voice'>
-            <image bindtap='onTapVoice' class='voiceImage' data-id='{{index}}' src='{{srcImage[index].image}}'></image>
-            <view class='duration'>{{item.voice_duration/1000}}S</view>
-          </view>
-          <view class='userInfo'>
-            <image class='userAvatarUrl' src='{{item.avatarUrl}}'></image>
-            <view class='userNickName'>{{item.nickName}}</view>
+    <view wx:if='{{likeCommentList.length>0}}'>
+      <view class='likeText'>收藏的影评√</view>
+      <view class='likeCommentList'>
+        <view class='commentCard' wx:for='{{likeCommentList}}' wx:key='id'>
+          <image class='movieImage' src='{{item.image}}'></image>
+          <view class='info'>
+            <view class='movieTitle'>{{item.title}}</view>
+            <view class='commentText' wx:if='{{item.comment_type==0}}'>{{item.comment}}</view>
+            <view wx:if='{{item.comment_type==1}}' class='voice'>
+              <image bindtap='onTapVoice' class='voiceImage' data-id='{{index}}' src='{{srcImage[index].image}}'></image>
+              <view class='duration'>{{item.voice_duration/1000}}S</view>
+            </view>
+            <view class='userInfo'>
+              <image class='userAvatarUrl' src='{{item.avatarUrl}}'></image>
+              <view class='userNickName'>{{item.nickName}}</view>
+            </view>
           </view>
         </view>
       </view>
+    </view> 
+  </view>
+  <view wx:if='{{ifLikeComment==false}}'>
+     <view wx:if='{{editCommentList.length==0}}'>
+      <view class='null-card'>
+        <image class='null-image' src='/images/null.jpg'></image>
+        <view class='null-text'>暂无发布影评，快来添加第一条发布影评吧！</view>
+      </view>
     </view>
+    <view wx:if='{{editCommentList.length>0}}'>
+      <view class='likeText'>发布的影评√</view>
+      <view class='likeCommentList'>
+        <view class='commentCard' wx:for='{{editCommentList}}' wx:key='id'>
+          <image class='movieImage' src='{{item.image}}'></image>
+          <view class='info'>
+            <view class='movieTitle'>{{item.title}}</view>
+            <view class='commentText' wx:if='{{item.comment_type==0}}'>{{item.comment}}</view>
+            <view wx:if='{{item.comment_type==1}}' class='voice'>
+              <image bindtap='onTapVoice' class='voiceImage' data-id='{{index}}' src='{{srcImage[index].image}}'></image>
+              <view class='duration'>{{item.voice_duration/1000}}S</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>  
   </view>
 </view>
-<button bindtap='onTapBackHome' type='primary' class='btn'>回到首页</button>
+<view class='btnCard'>
+  <button wx:if='{{ifLikeComment==true}}' bindtap='onTapChange' type='primary' class='btn'>查看发布影评</button>
+  <button wx:if='{{ifLikeComment==false}}' bindtap='onTapChange' type='primary' class='btn'>查看收藏影评</button>
+  <button bindtap='onTapBackHome' type='primary' class='btn'>回到首页</button>
+</view>

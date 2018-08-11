@@ -11,6 +11,8 @@ Page({
   data: {
     userInfo:null,
     likeCommentList:[],
+    editCommentList:[],
+    ifLikeComment:true,
     srcImage:[]
   },
 
@@ -29,6 +31,7 @@ Page({
           userInfo: userInfo
         })
         console.log(userInfo)
+        this.getLikeCommentList()
       }
     })
   },
@@ -44,6 +47,9 @@ Page({
     })
   },
   getLikeCommentList() {
+    this.setData({
+      ifLikeComment: true
+    })
     wx.showLoading({
       title: '收藏影评加载中...',
     })
@@ -51,9 +57,9 @@ Page({
       url: config.service.getLikeComment,
       success: res => {
         wx.hideLoading()
-        console.log(res.data.data)
+        console.log('likeComment',res.data.data)
         if (!res.data.code) {
-          this.setSrcImage(res.data.data)
+          this.setSrcImage(res.data.data,true)
         }
         else {
           wx.showToast({
@@ -68,6 +74,35 @@ Page({
         })
       }
     })
+  },
+  getEditCommentList(){
+    this.setData({
+      ifLikeComment:false
+    })
+    wx.showLoading({
+      title: '收藏影评加载中...',
+    })
+    qcloud.request({
+      url: config.service.getEditComment,
+      success: res => {
+        wx.hideLoading()
+        console.log('EditComment', res.data.data)
+        if (!res.data.code) {
+          this.setSrcImage( res.data.data)
+        }
+        else {
+          wx.showToast({
+            title: '收藏影评加载失败',
+          })
+        }
+      },
+      error: res => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '收藏影评加载失败',
+        })
+      }
+    }) 
   },
   setSrcImage(commentList){
     let srcImage = []
@@ -87,10 +122,20 @@ Page({
         })
       }
     }
-    this.setData({
-      srcImage: srcImage,
-      likeCommentList:commentList
-    })
+    if (this.data.ifLikeComment == true){
+      this.setData({
+        srcImage: srcImage,
+        likeCommentList: commentList,
+        ifLikeComment: true,
+      })
+    }else{
+      this.setData({
+        srcImage: srcImage,
+        editCommentList: commentList,
+        ifLikeComment: false,
+      })   
+    }
+
   },
   onTapVoice(e) {
     let index = e.target.dataset.id
@@ -125,5 +170,13 @@ Page({
   },
   onTapBackHome(){
     wx.navigateBack({})
+  },
+  onTapChange(){
+    let ifLikeComment = this.data.ifLikeComment
+    if(ifLikeComment==true){
+      this.getEditCommentList()
+    }else{
+      this.getLikeCommentList()
+    }
   }
 })

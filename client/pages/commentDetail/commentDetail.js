@@ -11,7 +11,8 @@ Page({
     comment_id:null,
     srcImage:null,
     ifLike:false,
-    likeCommentId:null
+    likeCommentId:null,
+    likeCommentUser:null
   },
   onLoad: function (options) {
     let comment_id = options.comment_id
@@ -44,7 +45,7 @@ Page({
       },
       success: res => {
         wx.hideLoading()
-        console.log(res.data.data)
+        console.log('影评列表',res.data.data)
         if (!res.data.code) {
           this.setComment(res.data.data[0])
           this.setSrcImage()
@@ -90,12 +91,13 @@ Page({
         movie_id: movie_id
       },
       success: res => {
-        console.log(res.data.data)
+        console.log('受否收藏过？',res.data.data)
         if (!res.data.code) {
             if(res.data.data.length>0){
               this.setData({
                 ifLike:true,
-                likeCommentId:res.data.data[0].id
+                likeCommentId:res.data.data[0].id,
+                likeCommentUser:res.data.data[0].user
               })
             }
         }
@@ -131,7 +133,7 @@ Page({
       },
       success: res => {
         wx.hideLoading()
-        console.log(res.data.data)
+        console.log('电影详情',res.data.data)
         if (!res.data.code) {
           this.setData({
             movie: res.data.data[0]
@@ -253,16 +255,21 @@ Page({
     }
   },
   addComment() {
-    wx.showActionSheet({
-      itemList: ['文字', '音频'],
-      success: res => {
-        wx.navigateTo({
-          url: '../editComment/editComment?type=' + res.tapIndex + '&movie_id=' + this.data.movie.id,
-        })
-      },
-      fail: res => {
-        console.log(res)
-      }
-    })
+    // if (this.data.likeCommentUser==this.data.userInfo.openId){
+    //   //当是一样的时候应该是跳转过去，但是现在一个电影评价了好几次，不能跳转啊，所有先注释掉
+    // }
+    // else{
+      wx.showActionSheet({
+        itemList: ['文字', '音频'],
+        success: res => {
+          wx.navigateTo({
+            url: '../editComment/editComment?type=' + res.tapIndex + '&movie_id=' + this.data.movie.id,
+          })
+        },
+        fail: res => {
+          console.log(res)
+        }
+      })
+    // }
   },
 })

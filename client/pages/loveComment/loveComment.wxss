@@ -114,12 +114,14 @@
   font-weight: bold;
   opacity: 0.7;
 }
+.btnCard{
+  display: flex;
+  flex-direction: row;
+}
 .btn{
-  position: fixed;
-  bottom: 0;
   height: 100rpx;
   text-align: center;
   border-top: 1rpx solid rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 40%;
   color:  #6699cc;
 }
